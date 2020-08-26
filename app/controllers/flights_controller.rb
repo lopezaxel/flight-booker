@@ -6,6 +6,7 @@ class FlightsController < ApplicationController
     @num_tickets_options = [['1', 1], ['2', 2], ['3', 3], ['4', 4]]
 
     @available_flights = Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", params[:from_id], params[:to_id], params[:date])
+    @num_tickets = flight_params[:num_tickets]
 
     console
   end
