@@ -1,0 +1,21 @@
+<h1>Create booking</h1>
+
+<%= form_with model: @booking do |booking| %>
+  <p>Date: <%= @flight.date %></p>
+  <p>From airport: <%= @flight.from_airport.code %></p>
+  <p>To airport: <%= @flight.to_airport.code %></p>
+  <p>Flight id: <%= @flight.id %></p>
+
+  <% @booking.passengers.each do |passenger| %>
+    <h2>Passenger nº<%= @booking.passengers.index(passenger) + 1 %></h2>
+    <%= fields_for passenger do |passenger_f| %>
+      <%= passenger_f.label :name, "Name: " %>
+      <%= passenger_f.text_field :name %><br /><br />
+
+      <%= passenger_f.label :email, "Email: " %>
+      <%= passenger_f.email_field :email %><br /><br />
+    <% end %>
+  <% end %>
+
+  <%= booking.submit "Submit" %>
+<% end %>
