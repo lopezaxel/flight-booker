@@ -6,9 +6,9 @@
   <p>To airport: <%= @flight.to_airport.code %></p>
   <p>Flight id: <%= @flight.id %></p>
 
-  <% @booking.passengers.each do |passenger| %>
-    <h2>Passenger nº<%= @booking.passengers.index(passenger) + 1 %></h2>
-    <%= fields_for passenger do |passenger_f| %>
+  <% @booking.passengers.each.with_index do |passenger, i| %>
+    <h2>Passenger nº<%= i + 1 %></h2>
+    <%= booking.fields_for :passengers, passenger do |passenger_f| %>
       <%= passenger_f.label :name, "Name: " %>
       <%= passenger_f.text_field :name %><br /><br />
 
@@ -17,5 +17,6 @@
     <% end %>
   <% end %>
 
+  <%= hidden_field_tag :flight_id, @flight.id %>
   <%= booking.submit "Submit" %>
 <% end %>

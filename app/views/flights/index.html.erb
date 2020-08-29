@@ -18,7 +18,7 @@
 <% unless @available_flights.empty? %>
   <%= form_with(url: "/bookings/new", method: "get", local: true) do %>
     <% @available_flights.each do |flight| %>
-      <% flight_formatted = "From #{flight.from_airport.code}, To #{flight.to_airport.code}, Date #{flight.date_formatted}, Duration #{flight.duration}" %>
+      <% flight_formatted = "From #{flight.from_airport.code}, To #{flight.to_airport.code}, Date #{flight.date_formatted}, Duration #{flight.duration}m" %>
       <%= radio_button("flight", "flight_id", flight.id) %><%=flight_formatted %><br />
     <% end %>
     

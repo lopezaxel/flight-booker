@@ -7,8 +7,6 @@ class FlightsController < ApplicationController
 
     @available_flights = Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", params[:from_id], params[:to_id], params[:date])
     @num_tickets = flight_params[:num_tickets]
-
-    console
   end
 
   private
