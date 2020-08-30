@@ -1,0 +1,3 @@
+Thank you for buying a ticket, <%= @passenger.name %>
+We are very happy for having selected us, your ticket is gonna be the date <%= @flight.date %>, with the flight id <%= @flight.id %>. For more information look at your <%= link_to 'booking', booking_url(@passenger.booking, host: '127.0.0.1:3000')%>.
+Have a nice flight and day!.

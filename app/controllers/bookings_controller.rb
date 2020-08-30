@@ -17,6 +17,10 @@ class BookingsController < ApplicationController
 
     @booking.save
 
+    @booking.passengers.each do |passenger|
+      PassengerMailer.with(passenger: passenger).thank_you_email.deliver_now
+    end
+
     redirect_to booking_path(@booking)
   end
 
